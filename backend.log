@@ -1,0 +1,1000 @@
+C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\langchain_core\_api\deprecation.py:25: UserWarning: Core Pydantic V1 functionality isn't compatible with Python 3.14 or greater.
+  from pydantic.v1.fields import FieldInfo as FieldInfoV1
+E:\api\LangGraph-trip-planner\backend\app\api\routes\map.py:24: FastAPIDeprecationWarning: `example` has been deprecated, please use `examples` instead
+  keywords: str = Query(..., description="搜索关键词", example="故宫"),
+E:\api\LangGraph-trip-planner\backend\app\api\routes\map.py:25: FastAPIDeprecationWarning: `example` has been deprecated, please use `examples` instead
+  city: str = Query(..., description="城市", example="北京"),
+E:\api\LangGraph-trip-planner\backend\app\api\routes\map.py:67: FastAPIDeprecationWarning: `example` has been deprecated, please use `examples` instead
+  city: str = Query(..., description="城市名称", example="北京")
+INFO:     Started server process [14984]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+
+============================================================
+-> 多agent的智能旅行助手 v1.0.0
+============================================================
+应用名称: 多agent的智能旅行助手
+版本: 1.0.0
+服务器: 0.0.0.0:8000
+高德地图API Key: 已配置
+OpenAI API Key: 已配置
+OpenAI Base URL: https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1
+OpenAI Model: qwen3.7-plus
+LangChain 追踪: 禁用
+智能体最大迭代次数: 3
+智能体温度: 0.7
+智能体超时: 30.0秒
+日志级别: INFO
+
+[OK] 配置验证通过
+
+============================================================
+[DOC] API文档: http://localhost:8000/docs
+[DOC] ReDoc文档: http://localhost:8000/redoc
+============================================================
+
+INFO:     127.0.0.1:60090 - "OPTIONS /api/trip/plan HTTP/1.1" 200 OK
+2026-08-18 14:26:33,913 - app.api.routes.trip - INFO - 
+============================================================
+2026-08-18 14:26:33,913 - app.api.routes.trip - INFO - \U0001f4e5 收到旅行规划请求 (LangGraph):
+2026-08-18 14:26:33,913 - app.api.routes.trip - INFO -    城市: 杭州
+2026-08-18 14:26:33,913 - app.api.routes.trip - INFO -    日期: 2026-08-18 - 2026-08-19
+2026-08-18 14:26:33,913 - app.api.routes.trip - INFO -    天数: 2
+2026-08-18 14:26:33,914 - app.api.routes.trip - INFO - ============================================================
+
+2026-08-18 14:26:33,914 - app.api.routes.trip - INFO - \U0001f504 获取 LangGraph 工作流实例...
+2026-08-18 14:26:33,914 - app.workflows.trip_planner_graph - INFO - \U0001f504 初始化 LangGraph 旅行规划工作流...
+2026-08-18 14:26:33,914 - app.tools.amap_mcp_tools - INFO - 首次加载高德地图工具，建立缓存...
+2026-08-18 14:26:33,915 - app.tools.amap_mcp_tools - INFO - 正在连接高德地图MCP服务器...
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type ListToolsRequest
+2026-08-18 14:26:49,302 - app.tools.amap_mcp_tools - INFO - \u2705 从MCP服务器加载了 16 个工具
+2026-08-18 14:26:49,363 - app.tools.amap_mcp_tools - INFO - 包装后工具数量: 16
+2026-08-18 14:26:49,363 - app.workflows.trip_planner_graph - INFO - \u2705 加载了 16 个工具
+2026-08-18 14:26:49,364 - app.workflows.trip_planner_graph - INFO - 创建智能体...
+2026-08-18 14:26:49,364 - app.agents.langgraph_agents - INFO -    创建景点搜索智能体...
+2026-08-18 14:26:52,950 - app.agents.langgraph_agents - INFO - [OK] 景点搜索智能体创建成功，工具数量: 16
+2026-08-18 14:26:52,950 - app.agents.langgraph_agents - INFO -    创建天气查询智能体...
+2026-08-18 14:26:52,958 - app.agents.langgraph_agents - INFO - [OK] 天气查询智能体创建成功，工具数量: 16
+2026-08-18 14:26:52,966 - app.agents.langgraph_agents - INFO - [OK] 酒店推荐智能体创建成功
+2026-08-18 14:26:52,969 - app.agents.langgraph_agents - INFO - [OK] 行程规划智能体创建成功
+2026-08-18 14:26:52,970 - app.workflows.trip_planner_graph - INFO - 构建 StateGraph...
+2026-08-18 14:26:52,983 - app.workflows.trip_planner_graph - INFO - \u2705 LangGraph 工作流初始化成功
+2026-08-18 14:26:52,983 - app.api.routes.trip - INFO - \U0001f680 开始执行工作流...
+2026-08-18 14:26:52,983 - app.workflows.trip_planner_graph - INFO - 
+============================================================
+2026-08-18 14:26:52,983 - app.workflows.trip_planner_graph - INFO - \U0001f680 开始 LangGraph 旅行规划工作流...
+2026-08-18 14:26:52,983 - app.workflows.trip_planner_graph - INFO - 目的地: 杭州
+2026-08-18 14:26:52,983 - app.workflows.trip_planner_graph - INFO - ============================================================
+
+2026-08-18 14:26:52,991 - app.workflows.trip_planner_graph - INFO - \U0001f324\ufe0f  查询天气...
+2026-08-18 14:26:52,994 - app.workflows.trip_planner_graph - INFO - \U0001f3e8 搜索酒店...
+2026-08-18 14:26:52,996 - app.workflows.trip_planner_graph - INFO - \U0001f4cd 搜索景点...
+2026-08-18 14:26:58,117 - openai._base_client - INFO - Retrying request to /chat/completions in 0.430100 seconds
+2026-08-18 14:27:00,276 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+2026-08-18 14:27:02,565 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+2026-08-18 14:27:06,578 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-18 14:27:07,909 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+2026-08-18 14:27:15,628 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-18 14:27:15,730 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+Processing request of type CallToolRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+2026-08-18 14:27:18,238 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+2026-08-18 14:27:20,271 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+Processing request of type ListToolsRequest
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+2026-08-18 14:27:22,190 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-18 14:27:22,192 - app.workflows.trip_planner_graph - ERROR - 解析景点信息失败: Expecting value: line 1 column 1 (char 0)
+2026-08-18 14:27:22,192 - app.workflows.trip_planner_graph - ERROR - 原始响应长度: 122
+2026-08-18 14:27:22,192 - app.workflows.trip_planner_graph - ERROR - 原始响应前500字符: 很抱歉，当前搜索杭州购物景点时遇到了网络连接问题。多次尝试都返回了SSL错误。
+
+这可能是由于：
+1. 地图API服务暂时不可用
+2. 网络连接不稳定
+
+建议您稍后再尝试查询。如果您有其他需要，比如查询杭州的天气、规划路线等，我也可以帮您处理。
+2026-08-18 14:27:22,194 - app.workflows.trip_planner_graph - ERROR - 提取的JSON字符串长度: 122
+2026-08-18 14:27:22,194 - app.workflows.trip_planner_graph - ERROR - 提取的JSON字符串前500字符: 很抱歉，当前搜索杭州购物景点时遇到了网络连接问题。多次尝试都返回了SSL错误。
+
+这可能是由于：
+1. 地图API服务暂时不可用
+2. 网络连接不稳定
+
+建议您稍后再尝试查询。如果您有其他需要，比如查询杭州的天气、规划路线等，我也可以帮您处理。
+Processing request of type ListToolsRequest
+2026-08-18 14:27:25,476 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-18 14:27:26,691 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-18 14:27:26,693 - app.workflows.trip_planner_graph - ERROR - 解析天气信息失败: Expecting value: line 1 column 1 (char 0)
+2026-08-18 14:27:26,693 - app.workflows.trip_planner_graph - ERROR - Weather raw response head: 很抱歉，查询杭州天气时遇到了网络连接问题。天气服务API暂时无法访问，可能是由于SSL连接错误导致的。
+
+请稍后再试，或者如果您有其他需要查询的城市，我也可以帮您尝试查询。
+2026-08-18 14:27:26,693 - app.workflows.trip_planner_graph - ERROR - Weather extracted JSON head: 很抱歉，查询杭州天气时遇到了网络连接问题。天气服务API暂时无法访问，可能是由于SSL连接错误导致的。
+
+请稍后再试，或者如果您有其他需要查询的城市，我也可以帮您尝试查询。
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+Processing request of type ListToolsRequest
+2026-08-18 14:27:40,178 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-18 14:27:40,179 - app.workflows.trip_planner_graph - ERROR - 解析酒店信息失败: Expecting value: line 1 column 1 (char 0)
+2026-08-18 14:27:40,180 - app.workflows.trip_planner_graph - INFO - Research agents completed; preparing itinerary planning...
+2026-08-18 14:27:40,181 - app.workflows.trip_planner_graph - INFO - \U0001f4cb 生成行程计划...
+2026-08-18 14:29:28,447 - openai._base_client - INFO - Retrying request to /chat/completions in 0.449245 seconds
+2026-08-18 14:29:33,902 - openai._base_client - INFO - Retrying request to /chat/completions in 0.906969 seconds
+2026-08-18 14:29:39,823 - openai._base_client - INFO - Retrying request to /chat/completions in 1.624345 seconds
+2026-08-18 14:29:46,456 - app.workflows.trip_planner_graph - ERROR - 行程规划失败: Connection error.
+Traceback (most recent call last):
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\httpx\_transports\default.py", line 101, in map_httpcore_exceptions
+    yield
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\httpx\_transports\default.py", line 250, in handle_request
+    resp = self._pool.handle_request(req)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\httpcore\_sync\connection_pool.py", line 256, in handle_request
+    raise exc from None
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\httpcore\_sync\connection_pool.py", line 236, in handle_request
+    response = connection.handle_request(
+        pool_request.request
+    )
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\httpcore\_sync\http_proxy.py", line 316, in handle_request
+    stream = stream.start_tls(**kwargs)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\httpcore\_sync\http11.py", line 376, in start_tls
+    return self._stream.start_tls(ssl_context, server_hostname, timeout)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\httpcore\_backends\sync.py", line 154, in start_tls
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\httpcore\_exceptions.py", line 14, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore.ConnectError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1077)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\openai\_base_client.py", line 1005, in request
+    response = self._client.send(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py", line 914, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py", line 942, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py", line 979, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\httpx\_client.py", line 1014, in _send_single_request
+    response = transport.handle_request(request)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\httpx\_transports\default.py", line 249, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\httpx\_transports\default.py", line 118, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx.ConnectError: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1077)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "E:\api\LangGraph-trip-planner\backend\app\workflows\trip_planner_graph.py", line 256, in _plan_itinerary
+    result = self.planner_agent.invoke(
+        self._prepare_agent_input(query, [])
+    )
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\langgraph\pregel\main.py", line 3094, in invoke
+    for chunk in self.stream(
+                 ~~~~~~~~~~~^
+        input,
+        ^^^^^^
+    ...<10 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\langgraph\pregel\main.py", line 2679, in stream
+    for _ in runner.tick(
+             ~~~~~~~~~~~^
+        [t for t in loop.tasks.values() if not t.writes],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        schedule_task=loop.accept_push,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\langgraph\pregel\_runner.py", line 167, in tick
+    run_with_retry(
+    ~~~~~~~~~~~~~~^
+        t,
+        ^^
+    ...<10 lines>...
+        },
+        ^^
+    )
+    ^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\langgraph\pregel\_retry.py", line 42, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\langgraph\_internal\_runnable.py", line 656, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\langgraph\_internal\_runnable.py", line 393, in invoke
+    ret = context.run(self.func, *args, **kwargs)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\langgraph\prebuilt\chat_agent_executor.py", line 679, in call_model
+    response = cast(AIMessage, static_model.invoke(model_input, config))  # type: ignore[union-attr]
+                               ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\langchain_core\runnables\base.py", line 3157, in invoke
+    input_ = context.run(step.invoke, input_, config)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\langchain_core\language_models\chat_models.py", line 402, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\langchain_core\language_models\chat_models.py", line 1123, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\langchain_core\language_models\chat_models.py", line 933, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\langchain_core\language_models\chat_models.py", line 1235, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\langchain_openai\chat_models\base.py", line 1473, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\langchain_openai\chat_models\base.py", line 1468, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\openai\_legacy_response.py", line 367, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\openai\_utils\_utils.py", line 286, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\openai\resources\chat\completions\completions.py", line 1204, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<47 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\openai\_base_client.py", line 1297, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\openai\_base_client.py", line 1037, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+During task with name 'agent' and id '1e3ca34f-2a0a-b30b-9200-65c8a0512245'
+2026-08-18 14:29:46,912 - app.workflows.trip_planner_graph - ERROR - \u274c 旅行规划失败: 行程规划失败: Connection error.
+2026-08-18 14:29:46,912 - app.api.routes.trip - ERROR - \u274c 生成旅行计划失败: 行程规划失败: Connection error.
+Traceback (most recent call last):
+  File "E:\api\LangGraph-trip-planner\backend\app\api\routes\trip.py", line 50, in plan_trip
+    trip_plan = workflow.plan_trip(request)
+  File "E:\api\LangGraph-trip-planner\backend\app\workflows\trip_planner_graph.py", line 642, in plan_trip
+    raise Exception(error_msg)
+Exception: 行程规划失败: Connection error.
+[SUCCESS] LangChain LLM 初始化成功
+   模型: qwen3.7-plus
+   Base URL: https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1
+INFO:     127.0.0.1:60090 - "POST /api/trip/plan HTTP/1.1" 500 Internal Server Error
+2026-08-18 14:32:05,240 - app.api.routes.trip - INFO - 
+============================================================
+2026-08-18 14:32:05,240 - app.api.routes.trip - INFO - \U0001f4e5 收到旅行规划请求 (LangGraph):
+2026-08-18 14:32:05,240 - app.api.routes.trip - INFO -    城市: 杭州
+2026-08-18 14:32:05,240 - app.api.routes.trip - INFO -    日期: 2026-08-18 - 2026-08-19
+2026-08-18 14:32:05,240 - app.api.routes.trip - INFO -    天数: 2
+2026-08-18 14:32:05,241 - app.api.routes.trip - INFO - ============================================================
+
+2026-08-18 14:32:05,241 - app.api.routes.trip - INFO - \U0001f504 获取 LangGraph 工作流实例...
+2026-08-18 14:32:05,241 - app.api.routes.trip - INFO - \U0001f680 开始执行工作流...
+2026-08-18 14:32:05,241 - app.workflows.trip_planner_graph - INFO - 
+============================================================
+2026-08-18 14:32:05,241 - app.workflows.trip_planner_graph - INFO - \U0001f680 开始 LangGraph 旅行规划工作流...
+2026-08-18 14:32:05,241 - app.workflows.trip_planner_graph - INFO - 目的地: 杭州
+2026-08-18 14:32:05,241 - app.workflows.trip_planner_graph - INFO - ============================================================
+
+2026-08-18 14:32:05,242 - app.workflows.trip_planner_graph - INFO - \U0001f324\ufe0f  查询天气...
+2026-08-18 14:32:05,247 - app.workflows.trip_planner_graph - INFO - \U0001f3e8 搜索酒店...
+2026-08-18 14:32:05,250 - app.workflows.trip_planner_graph - INFO - \U0001f4cd 搜索景点...
+2026-08-18 14:32:11,028 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-18 14:32:11,989 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-18 14:32:12,097 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+Processing request of type CallToolRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+2026-08-18 14:32:26,301 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+2026-08-18 14:32:32,317 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+Processing request of type ListToolsRequest
+2026-08-18 14:32:33,017 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+Processing request of type CallToolRequest
+Processing request of type CallToolRequest
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+Processing request of type CallToolRequest
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+Processing request of type CallToolRequest
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+2026-08-18 14:32:34,959 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\ce_hqggPcsP1ryjV\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type ListToolsRequest
+Processing request of type CallToolRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+2026-08-18 14:32:46,263 - openai._base_client - INFO - Retrying request to /chat/completions in 0.396286 seconds
+Processing request of type ListToolsRequest
+2026-08-18 14:33:20,317 - openai._base_client - INFO - Retrying request to /chat/completions in 0.766038 seconds
+2026-08-18 14:33:25,774 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-18 14:33:26,677 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+Processing request of type CallToolRequest
+Processing request of type CallToolRequest
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+Processing request of type CallToolRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+2026-08-18 14:33:36,878 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+C:\Users\李海涛\AppData\Local\uv\cache\archive-v0\IWHZMvpuR6OwlSar\Lib\site-packages\pydantic_settings\sources\utils.py:47: IncompleteFieldDefinitionWarning: Field 'lifespan' has an incomplete definition: its annotation contains an unresolved forward reference, so settings sources may fail to correctly resolve its value. Call `model_rebuild()` on the model where the field is defined, once all the referenced types are defined.
+  warnings.warn(
+Processing request of type CallToolRequest
+Processing request of type CallToolRequest
+Processing request of type CallToolRequest
+Processing request of type CallToolRequest
+Processing request of type CallToolRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+Processing request of type ListToolsRequest
+2026-08-18 14:34:13,309 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-18 14:34:19,565 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-18 14:34:19,567 - app.workflows.trip_planner_graph - ERROR - 解析酒店信息失败: 1 validation error for Hotel
+rating
+  Input should be a valid string [type=string_type, input_value=3.2, input_type=float]
+    For further information visit https://errors.pydantic.dev/2.12/v/string_type
+2026-08-18 14:34:19,568 - app.workflows.trip_planner_graph - INFO - Research agents completed; preparing itinerary planning...
+2026-08-18 14:34:19,568 - app.workflows.trip_planner_graph - INFO - \U0001f4cb 生成行程计划...
+2026-08-18 14:35:33,668 - httpx - INFO - HTTP Request: POST https://llm-fvwqorb5ob4fe08h.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions "HTTP/1.1 200 OK"
+2026-08-18 14:35:33,671 - app.workflows.trip_planner_graph - INFO - 
+============================================================
+2026-08-18 14:35:33,671 - app.workflows.trip_planner_graph - INFO - \u2705 旅行计划生成完成!
+2026-08-18 14:35:33,671 - app.workflows.trip_planner_graph - INFO - ============================================================
+
+2026-08-18 14:35:33,672 - app.api.routes.trip - INFO - \u2705 旅行计划生成成功,准备返回响应
+
+INFO:     127.0.0.1:60816 - "POST /api/trip/plan HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61512 - "GET /api/poi/photo?name=%E8%A5%BF%E6%B9%96%E9%A3%8E%E6%99%AF%E5%90%8D%E8%83%9C%E5%8C%BA HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "E:\api\LangGraph-trip-planner\backend\app\services\unsplash_service.py", line 39, in search_photos
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://api.unsplash.com/search/photos?query=%E8%A5%BF%E6%B9%96%E9%A3%8E%E6%99%AF%E5%90%8D%E8%83%9C%E5%8C%BA+China+landmark&per_page=1&client_id=your+key
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\api\LangGraph-trip-planner\backend\app\api\routes\poi.py", line 108, in get_attraction_photo
+    photo_url = unsplash_service.get_photo_url(f"{name} China landmark")
+  File "E:\api\LangGraph-trip-planner\backend\app\services\unsplash_service.py", line 94, in get_photo_url
+    photos = self.search_photos(query, per_page=1)
+  File "E:\api\LangGraph-trip-planner\backend\app\services\unsplash_service.py", line 58, in search_photos
+    print(f"\u274c Unsplash搜索失败: {str(e)}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'gbk' codec can't encode character '\u274c' in position 0: illegal multibyte sequence
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\uvicorn\protocols\http\httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\applications.py", line 1158, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 431, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 313, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\api\LangGraph-trip-planner\backend\app\api\routes\poi.py", line 124, in get_attraction_photo
+    print(f"\u274c 获取景点图片失败: {str(e)}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'gbk' codec can't encode character '\u274c' in position 0: illegal multibyte sequence
+INFO:     127.0.0.1:61513 - "GET /api/poi/photo?name=%E6%B2%B3%E5%9D%8A%E8%A1%97 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "E:\api\LangGraph-trip-planner\backend\app\services\unsplash_service.py", line 39, in search_photos
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://api.unsplash.com/search/photos?query=%E6%B2%B3%E5%9D%8A%E8%A1%97+China+landmark&per_page=1&client_id=your+key
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\api\LangGraph-trip-planner\backend\app\api\routes\poi.py", line 108, in get_attraction_photo
+    photo_url = unsplash_service.get_photo_url(f"{name} China landmark")
+  File "E:\api\LangGraph-trip-planner\backend\app\services\unsplash_service.py", line 94, in get_photo_url
+    photos = self.search_photos(query, per_page=1)
+  File "E:\api\LangGraph-trip-planner\backend\app\services\unsplash_service.py", line 58, in search_photos
+    print(f"\u274c Unsplash搜索失败: {str(e)}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'gbk' codec can't encode character '\u274c' in position 0: illegal multibyte sequence
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\uvicorn\protocols\http\httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\applications.py", line 1158, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 431, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 313, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\api\LangGraph-trip-planner\backend\app\api\routes\poi.py", line 124, in get_attraction_photo
+    print(f"\u274c 获取景点图片失败: {str(e)}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'gbk' codec can't encode character '\u274c' in position 0: illegal multibyte sequence
+INFO:     127.0.0.1:61514 - "GET /api/poi/photo?name=%E6%9D%AD%E5%B7%9E%E4%B8%87%E8%B1%A1%E5%9F%8E HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "E:\api\LangGraph-trip-planner\backend\app\services\unsplash_service.py", line 39, in search_photos
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://api.unsplash.com/search/photos?query=%E6%9D%AD%E5%B7%9E%E4%B8%87%E8%B1%A1%E5%9F%8E+China+landmark&per_page=1&client_id=your+key
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\api\LangGraph-trip-planner\backend\app\api\routes\poi.py", line 108, in get_attraction_photo
+    photo_url = unsplash_service.get_photo_url(f"{name} China landmark")
+  File "E:\api\LangGraph-trip-planner\backend\app\services\unsplash_service.py", line 94, in get_photo_url
+    photos = self.search_photos(query, per_page=1)
+  File "E:\api\LangGraph-trip-planner\backend\app\services\unsplash_service.py", line 58, in search_photos
+    print(f"\u274c Unsplash搜索失败: {str(e)}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'gbk' codec can't encode character '\u274c' in position 0: illegal multibyte sequence
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\uvicorn\protocols\http\httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\applications.py", line 1158, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 431, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 313, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\api\LangGraph-trip-planner\backend\app\api\routes\poi.py", line 124, in get_attraction_photo
+    print(f"\u274c 获取景点图片失败: {str(e)}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'gbk' codec can't encode character '\u274c' in position 0: illegal multibyte sequence
+INFO:     127.0.0.1:61515 - "GET /api/poi/photo?name=%E6%9D%AD%E5%B7%9E%E6%9D%A5%E7%A6%8F%E5%A3%AB%E5%B9%BF%E5%9C%BA HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "E:\api\LangGraph-trip-planner\backend\app\services\unsplash_service.py", line 39, in search_photos
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://api.unsplash.com/search/photos?query=%E6%9D%AD%E5%B7%9E%E6%9D%A5%E7%A6%8F%E5%A3%AB%E5%B9%BF%E5%9C%BA+China+landmark&per_page=1&client_id=your+key
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\api\LangGraph-trip-planner\backend\app\api\routes\poi.py", line 108, in get_attraction_photo
+    photo_url = unsplash_service.get_photo_url(f"{name} China landmark")
+  File "E:\api\LangGraph-trip-planner\backend\app\services\unsplash_service.py", line 94, in get_photo_url
+    photos = self.search_photos(query, per_page=1)
+  File "E:\api\LangGraph-trip-planner\backend\app\services\unsplash_service.py", line 58, in search_photos
+    print(f"\u274c Unsplash搜索失败: {str(e)}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'gbk' codec can't encode character '\u274c' in position 0: illegal multibyte sequence
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\uvicorn\protocols\http\httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\applications.py", line 1158, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 431, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 313, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\api\LangGraph-trip-planner\backend\app\api\routes\poi.py", line 124, in get_attraction_photo
+    print(f"\u274c 获取景点图片失败: {str(e)}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'gbk' codec can't encode character '\u274c' in position 0: illegal multibyte sequence
+INFO:     127.0.0.1:61516 - "GET /api/poi/photo?name=%E7%A0%82%E4%B9%8B%E8%88%B9%E5%9B%BD%E9%99%85%E7%94%9F%E6%B4%BB%E5%B9%BF%E5%9C%BA HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "E:\api\LangGraph-trip-planner\backend\app\services\unsplash_service.py", line 39, in search_photos
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://api.unsplash.com/search/photos?query=%E7%A0%82%E4%B9%8B%E8%88%B9%E5%9B%BD%E9%99%85%E7%94%9F%E6%B4%BB%E5%B9%BF%E5%9C%BA+China+landmark&per_page=1&client_id=your+key
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\api\LangGraph-trip-planner\backend\app\api\routes\poi.py", line 108, in get_attraction_photo
+    photo_url = unsplash_service.get_photo_url(f"{name} China landmark")
+  File "E:\api\LangGraph-trip-planner\backend\app\services\unsplash_service.py", line 94, in get_photo_url
+    photos = self.search_photos(query, per_page=1)
+  File "E:\api\LangGraph-trip-planner\backend\app\services\unsplash_service.py", line 58, in search_photos
+    print(f"\u274c Unsplash搜索失败: {str(e)}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'gbk' codec can't encode character '\u274c' in position 0: illegal multibyte sequence
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\uvicorn\protocols\http\httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\applications.py", line 1158, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 431, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 313, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\api\LangGraph-trip-planner\backend\app\api\routes\poi.py", line 124, in get_attraction_photo
+    print(f"\u274c 获取景点图片失败: {str(e)}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'gbk' codec can't encode character '\u274c' in position 0: illegal multibyte sequence
+INFO:     127.0.0.1:61517 - "GET /api/poi/photo?name=%E5%8D%97%E5%AE%8B%E5%BE%A1%E8%A1%97 HTTP/1.1" 500 Internal Server Error
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "E:\api\LangGraph-trip-planner\backend\app\services\unsplash_service.py", line 39, in search_photos
+    response.raise_for_status()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\requests\models.py", line 1026, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://api.unsplash.com/search/photos?query=%E5%8D%97%E5%AE%8B%E5%BE%A1%E8%A1%97+China+landmark&per_page=1&client_id=your+key
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\api\LangGraph-trip-planner\backend\app\api\routes\poi.py", line 108, in get_attraction_photo
+    photo_url = unsplash_service.get_photo_url(f"{name} China landmark")
+  File "E:\api\LangGraph-trip-planner\backend\app\services\unsplash_service.py", line 94, in get_photo_url
+    photos = self.search_photos(query, per_page=1)
+  File "E:\api\LangGraph-trip-planner\backend\app\services\unsplash_service.py", line 58, in search_photos
+    print(f"\u274c Unsplash搜索失败: {str(e)}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'gbk' codec can't encode character '\u274c' in position 0: illegal multibyte sequence
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\uvicorn\protocols\http\httptools_impl.py", line 416, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self.scope, self.receive, self.send
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\applications.py", line 1158, in __call__
+    await super().__call__(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\applications.py", line 107, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py", line 186, in __call__
+    raise exc
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\cors.py", line 95, in __call__
+    await self.simple_response(scope, receive, send, request_headers=headers)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\cors.py", line 153, in simple_response
+    await self.app(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 119, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 105, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 431, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\李海涛\AppData\Roaming\Python\Python314\site-packages\fastapi\routing.py", line 313, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\api\LangGraph-trip-planner\backend\app\api\routes\poi.py", line 124, in get_attraction_photo
+    print(f"\u274c 获取景点图片失败: {str(e)}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'gbk' codec can't encode character '\u274c' in position 0: illegal multibyte sequence
